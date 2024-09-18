@@ -2,21 +2,39 @@
 #include <stdlib.h>
 #include <string.h>
 
-unsigned long long fibbonachiRecurs(unsigned long long num, unsigned long long *fibArray)
+unsigned long long fibbonachiRecurs(unsigned long long num)
 {
-   unsigned long long fibValue;
+
    if (num == 0 || num == 1)
    {
       return num;
    }
-   else if(fibArray[num] == 0){
-   fibValue = fibbonachiRecurs(num- 1, fibArray) + fibbonachiRecurs(num-2, fibArray);
-   fibArray[num] = fibValue;
+   else
+   {
+      return fibbonachiRecurs(num - 1) + fibbonachiRecurs(num - 2);
    }
 }
 
+unsigned long long fib_wrapper(unsigned long long param, unsigned long long *arr, char *__argv)
+{
+   if (__argv[2] == 'r')
+   {
+      if (arr[param] == 0)
+      {
+         arr[param] = fibbonachiRecurs(param);
+      }
+   }
+   else if (__argv[2] == 'i')
+   {
+      if (arr[param == 0])
+      {
+         arr[param] = fibbonachiItera(param);
+      }
+   }
+   return arr[param];
+}
 
-unsigned long long fibbonachiItera(unsigned long long n, unsigned long long *fibArray)
+unsigned long long fibbonachiItera(unsigned long long n)
 {
    unsigned long long num1 = 0;
    unsigned long long num2 = 1;
@@ -54,17 +72,10 @@ int main(int __argc, char *__argv[])
       fibArray[0] = 0;
       fibArray[1] = 1;
 
-      if (*__argv[2] == 'i')
-      {
-         fibbonachiNum = fibbonachiItera(nthNum - 1, fibArray);
-      }
-      else if (*__argv[2] == 'r')
-      {
-        fibbonachiNum = fibbonachiRecurs(nthNum - 1, fibArray);
-      }
-      
-         printf("%llu", fibbonachiNum);
-      
+      fibbonachiNum = fib_wrapper(nthNum - 1, fibArray, __argv[2]);
+
+      printf("%llu", fibbonachiNum);
+
       free(fibArray);
    }
    return 0;
