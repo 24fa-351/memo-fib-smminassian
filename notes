@@ -1,0 +1,30 @@
+Program Expectations
+fib(1) = 0
+fib(2) = 1
+fib(3) = 1
+fib(4) = 2
+
+So 
+Because we subtract 1 in main 
+fibonachiRecurs(0) = 0
+fibonachiRecurs(1) = 1
+fibonachiRecurs(2) = 1
+fibonachiRecurs(3) = 2
+fibArray[1] = 1
+fib
+
+So heres the deal. I need to review the lectures before class. Why? Because professor told me so. Moreover, he would have not have mentioned 
+that I need to watch the lectures if i did watch the lectures. But because i didn't do it, thats why he told me to do it. 
+
+So the incentive of watching the videos is to make sure that I can understand whats going on during class. Not only that it is also to have
+background knowledge when I ask questions. Cus why I ask questions when if I dont review the material. 
+
+Also he said to ask him questions when I am lost. He wants me to ask incentive questions and this makes sense cus he wants
+his students to succeed in the class. So with that said, I will not be scared to ask questions and I willl do my prep before the class. 
+The reason why is because if I can answer my questions on my own, then that is a new level of mastery.
+
+Ok now lets go into the code. Why write this program? I write it to understand Memoization. What is Memoization? It is when you store
+previously computed values in a cache and once those computed values are computed again, we just return the value that is stored in the cache. 
+So really we only do one function call and that function call is the new number we try to find. 
+
+0 1 1 2 3 5 8 13
