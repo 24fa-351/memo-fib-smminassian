@@ -26,7 +26,7 @@ unsigned long long fib_wrapper(unsigned long long param, unsigned long long *arr
    }
    else if (__argv[2] == 'i')
    {
-      if (arr[param == 0])
+      if (arr[param] == 0)
       {
          arr[param] = fibbonachiItera(param);
       }
