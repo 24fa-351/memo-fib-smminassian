@@ -15,25 +15,6 @@ unsigned long long fibbonachiRecurs(unsigned long long num)
    }
 }
 
-unsigned long long fib_wrapper(unsigned long long param, unsigned long long *arr, char *__argv)
-{
-   if (__argv[2] == 'r')
-   {
-      if (arr[param] == 0)
-      {
-         arr[param] = fibbonachiRecurs(param);
-      }
-   }
-   else if (__argv[2] == 'i')
-   {
-      if (arr[param] == 0)
-      {
-         arr[param] = fibbonachiItera(param);
-      }
-   }
-   return arr[param];
-}
-
 unsigned long long fibbonachiItera(unsigned long long n)
 {
    unsigned long long num1 = 0;
@@ -48,6 +29,30 @@ unsigned long long fibbonachiItera(unsigned long long n)
    }
    return num3;
 }
+
+
+unsigned long long fib_wrapper(unsigned long long param, unsigned long long *arr, char *__argv)
+{
+   if (__argv[2] == 'r')
+   {
+      for(int i = 2; i < param; i++){
+         if (arr[i] == 0)
+      {
+         arr[i] = fibbonachiRecurs(param);
+         
+      }
+      }
+   }
+   else if (__argv[2] == 'i')
+   {
+      if (arr[param] == 0)
+      {
+         arr[param] += fibbonachiItera(param);
+      }
+   }
+   return arr[param];
+}
+
 
 int main(int __argc, char *__argv[])
 {
