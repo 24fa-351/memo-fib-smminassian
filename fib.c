@@ -6,14 +6,16 @@ unsigned long long fib_wrapper(unsigned long long param);
 
 unsigned long long fibonachiRecurs(unsigned long long num)
 {
-   printf("fibbonachiRecurs(%llu)\n", num); //Incentive is to look at what is getting passed into function.
+   // printf("fibbonachiRecurs(%llu)\n", num); // Incentive is to look at what is getting passed into function.
    if (num == 0 || num == 1)
    {
       return num;
    }
    else
    {
-      return fib_wrapper(num - 1) + fib_wrapper(num - 2); //incentive of doing this is to check if I have the num -1 value in cache or the num -2 value in cache.
+      num = fib_wrapper(num - 1) + fib_wrapper(num - 2);
+      // printf("Sum is %llu\n", num);
+      return num; // incentive of doing this is to check if I have the num -1 value in cache or the num -2 value in cache.
    }
 }
 
@@ -37,14 +39,18 @@ unsigned long long fibArray[200];
 unsigned long long fib_wrapper(unsigned long long param)
 {
 
-   printf("fib_wrapper %llu \n", param);
-   if (fibArray[param] == 4) //if param == 4 then we no we havent calculated it yet. If it isnt then have we calculated it so return its value 
+   // printf("fib_wrapper %llu \n", param);
+   if (fibArray[param] == 4) // if param == 4 then we no we havent calculated it yet. If it isnt then have we calculated it so return its value
    {
       fibArray[param] = fibonachiRecurs(param);
-      printf("fib_wrapper setting %llu to %llu\n", param, fibArray[param]);
+      // printf("fib_wrapper setting %llu to %llu\n", param, fibArray[param]);
+   }
+   else if (fibArray[param] == 4)
+   {
+      fibArray[param] = fibonachiRecurs(param);
    }
 
-   printf("fib_wrapper returning %llu\n", fibArray[param]);
+   // printf("fib_wrapper returning %llu\n", fibArray[param]);
    return fibArray[param];
 }
 
@@ -56,27 +62,22 @@ int main(int __argc, char *__argv[])
    unsigned long long fibbonachiNum = 0;
    unsigned long long num1 = 0;
 
-   
-      for (int i = 0; i < 200; i++)
-      {
-         fibArray[i] = 4; // initalize all 200 cells to 4
-      }
-   
-   if (__argc == 4)
+   for (int i = 0; i < 200; i++)
+   {
+      fibArray[i] = 4; // initalize all 200 cells to 4
+   }
+
+   if (__argc == 3)
    {
 
-      filePointer = fopen(__argv[3], "r");
-      fscanf(filePointer, "%llu", &fileNum);
-      fclose(filePointer);
-
       num1 = atoi(__argv[1]);
-      nthNum = num1 + fileNum;
-      for (int i = 1; i <= nthNum; i++)
-      {
-         fibbonachiNum = fib_wrapper(i - 1); //its basically doing nthNum -1 but here it is i cus of for loop.
+      nthNum = num1;
 
-         printf("final result %llu\n ", fibbonachiNum);
-      }
+      fibbonachiNum = fib_wrapper(nthNum - 1);
+
+      // its basically doing nthNum -1 but here it is i cus of for loop.
+
+      printf("%llu", fibbonachiNum);
    }
    return 0;
 }
