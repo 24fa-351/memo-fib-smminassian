@@ -4,7 +4,7 @@
 
 unsigned long long fib_wrapper(unsigned long long param);
 
-unsigned long long fibonachiRecurs(unsigned long long num)
+unsigned long long fib_r(unsigned long long num)
 {
    if (num == 0 || num == 1)
    {
@@ -16,7 +16,7 @@ unsigned long long fibonachiRecurs(unsigned long long num)
    }
 }
 
-unsigned long long fibbonachiItera(unsigned long long n)
+unsigned long long fib_i(unsigned long long n)
 {
    unsigned long long num1 = 0;
    unsigned long long num2 = 1;
@@ -37,7 +37,7 @@ unsigned long long fib_wrapper(unsigned long long param)
 {
    if (fibArray[param] == 4) // if param == 4 then we no we havent calculated it yet. If it isnt then have we calculated it so return its value
    {
-      fibArray[param] = fibonachiRecurs(param);
+      fibArray[param] = fib_r(param);
    }
    return fibArray[param];
 }
